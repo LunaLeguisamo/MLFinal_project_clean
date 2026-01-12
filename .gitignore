@@ -1,0 +1,8 @@
+results/
+emotion_model/
+data/tokenized_*/
+*.pt
+*.bin
+*.safetensors
+*.arrow
+__pycache__/

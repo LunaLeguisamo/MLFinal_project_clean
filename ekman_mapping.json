@@ -1,0 +1,6 @@
+{
+"anger": ["anger", "annoyance", "disapproval", "disgust"],
+"fear": ["fear", "nervousness"],
+"joy": ["joy", "amusement", "approval", "excitement", "gratitude",  "love", "optimism", "relief", "pride", "admiration", "desire", "caring"],
+"sadness": ["sadness", "disappointment", "embarrassment", "grief",  "remorse"]
+}
