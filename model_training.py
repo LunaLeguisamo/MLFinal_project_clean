@@ -11,21 +11,10 @@ tokenized_train = load_from_disk("data/tokenized_train")
 tokenized_dev = load_from_disk("data/tokenized_dev")
 tokenized_test = load_from_disk("data/tokenized_test")
 
-tokenized_train = tokenized_train.shuffle(seed=42).select(range(5000))
-tokenized_dev = tokenized_dev.shuffle(seed=42).select(range(1000))
-
 """Entrena un modelo de clasificación de emociones utilizando datos tokenizados.
 """
 # Load tokenized 
 
-def compute_metrics(eval_pred):
-    logits, labels = eval_pred
-    predictions = np.argmax(logits, axis=1)
-
-    return {
-        "accuracy": accuracy_score(labels, predictions),
-        "f1": f1_score(labels, predictions, average="macro")
-    }
 def compute_metrics(eval_pred):
     logits, labels = eval_pred
     predictions = np.argmax(logits, axis=1)
@@ -52,7 +41,7 @@ training_args = TrainingArguments(
     learning_rate=2e-5,
     per_device_train_batch_size=16,
     per_device_eval_batch_size=16,
-    num_train_epochs=1,
+    num_train_epochs=4,
     weight_decay=0.01,
     logging_steps=100,
     load_best_model_at_end=True,
