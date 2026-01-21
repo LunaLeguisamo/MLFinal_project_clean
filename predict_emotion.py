@@ -2,18 +2,12 @@ import torch
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 """Script para predecir la emoción de un texto dado utilizando un modelo preentrenado."""
 
-# Configurar dispositivo
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
-# Cargar modelo y tokenizer
-tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
-model = AutoModelForSequenceClassification.from_pretrained("./emotion_model")
-model.to(device)
-model.eval()
-
 # Configuración
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 MODEL_NAME = "1un4-13guis4m0/emotion-distilbert-ekman"
 model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME)
+model.to(device)
+model.eval()
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 id2label = model.config.id2label
 MAX_LENGTH = 128
