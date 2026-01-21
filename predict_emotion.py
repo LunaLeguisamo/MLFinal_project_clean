@@ -12,7 +12,9 @@ model.to(device)
 model.eval()
 
 # Configuración
-MODEL_PATH = "./emotion_model" 
+MODEL_NAME = "1un4-13guis4m0/emotion-distilbert-ekman"
+model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME)
+tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 id2label = model.config.id2label
 MAX_LENGTH = 128
 

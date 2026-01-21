@@ -2,7 +2,7 @@ import numpy as np
 from transformers import (
     AutoModelForSequenceClassification,
     TrainingArguments,
-    Trainer
+    Trainer, AutoTokenizer
 )
 from sklearn.metrics import accuracy_score, f1_score
 from datasets import load_from_disk
@@ -65,3 +65,7 @@ for k, v in test_results.items():
     print(f"{k}: {v:.4f}")
 
 trainer.save_model("./emotion_model")
+tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+
+model.save_pretrained("./emotion_model")
+tokenizer.save_pretrained("./emotion_model")
